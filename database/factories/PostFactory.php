@@ -2,7 +2,9 @@
 
 namespace Database\Factories;
 
+use App\Models\Post;
 use App\Models\User;
+use App\Models\Category;
 use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -25,5 +27,14 @@ class PostFactory extends Factory
             'body' => fake()->realTextBetween(minNbChars:600, maxNbChars:1800),
             'tags' => fake()->word()
         ];
+    }
+
+    public function withCategories($min = 1, $max = 3): static{
+        return $this->afterCreating(function(Post $post) use ($min, $max){
+            $count = rand($min, $max);
+            $categories = Category::inRandomOrder()->take($count)->pluck('id');
+
+            $post->categories()->attach($categories);
+        });
     }
 }

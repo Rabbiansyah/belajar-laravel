@@ -18,7 +18,7 @@
                     alt="Author avatar" class="w-full h-full object-cover">
             </div>
             <div>
-                <div class="font-medium">{{$post['author']}}</div>
+                <div class="font-medium">{{$post['author']->name}}</div>
                 <div class="text-gray-500 text-sm flex items-center">
                     <p class="text-xs text-gray-500">{{$post->created_at->diffForHumans()}}</p>
                 </div>

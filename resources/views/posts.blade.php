@@ -9,7 +9,9 @@
                         <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
                             alt="Author" class="w-10 h-10 rounded-full">
                         <div>
-                            <h3 class="text-sm font-medium">{{ $post['author']->name }}</h3>
+                            <h3 class="text-sm font-medium">
+                                <a href="/author/{{ $post->author->username }}" class="hover:underline">{{ $post['author']->name }}</a>
+                                </h3>
                             <p class="text-xs text-gray-500">{{$post->created_at->format('d M Y')}}</p>
                         </div>
                     </div>
